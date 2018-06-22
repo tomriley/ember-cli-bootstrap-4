@@ -53,7 +53,8 @@ module.exports = {
     } while (current.parent.parent && (current = current.parent));
 
     if (app.project.findAddonByName('ember-cli-sass')) {
-      styleTrees.push(new Funnel(path.join('node_modules', 'bootstrap', 'scss'), {
+      var scssDir = path.dirname(app.project.resolveSync('bootstrap/scss/bootstrap.scss'));
+      styleTrees.push(new Funnel(scssDir, {
         destDir: 'ember-cli-bootstrap-4'
       }));
     }
